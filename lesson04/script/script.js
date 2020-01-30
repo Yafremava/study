@@ -6,16 +6,18 @@ let money = Number(prompt("Ваш месячный доход?", 1000)),
   deposit = Boolean(confirm("Есть ли у вас депозит в банке?")),
   mission = 800,
   period = 4,
-
   expenses1 = prompt("Введите обязательную статью расходов?",'общага'),
   amount1 =Number(prompt("Во сколько это обойдется?")),
   expenses2 = prompt("Введите обязательную статью расходов?", 'продукты'),
   amount2 =Number(prompt("Во сколько это обойдется?")),
   budgetMonth = money -amount1 - amount2;
 
-console.log(typeof money);
-console.log(typeof income);
-console.log(typeof deposit);
+let showTypeOf = function(data){
+  console.log(data, typeof(data));
+}
+showTypeOf(money)
+showTypeOf(income)
+showTypeOf(deposit)
 
 console.log('Длина строки addExpenses: '+ addExpenses.length());
 
@@ -31,18 +33,16 @@ console.log('Цель будет достигнута за ' + Math.ceil(mission
 let budgetDay = budgetMonth / 30;
 console.log('Бюджет на день: ' + budgetDay);
 
-let getStatusIncome = function(){
-  if(budgetDay >= 1200){
-    return("У вас высокий уровень дохода");
-  } else if(budgetDay >= 600 && budgetDay < 1200){
-    return("У вас средний уровень дохода");
-  } else if(budgetDay < 600 && budgetDay > 0){
-    return("К сожалению у вас уровень дохода ниже среднего");
-  } else if(budgetDay < 0){
-    return("Что-то пошло не так");
-  } else {
-    return("Все ваши доходы идут на обязательные рассходы");
-  }
-};
+if(budgetDay >= 1200){
+  console.log("У вас высокий уровень дохода");
+} else if(budgetDay >= 600 && budgetDay < 1200){
+  console.log("У вас средний уровень дохода");
+} else if(budgetDay < 600 && budgetDay > 0){
+  console.log("К сожалению у вас уровень дохода ниже среднего");
+} else if(budgetDay < 0){
+  console.log("Что-то пошло не так");
+} else {
+  console.log("Все ваши доходы идут на обязательные рассходы");
+}
 
-console.log(getStatusIncome());
+  
