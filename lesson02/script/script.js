@@ -11,8 +11,8 @@ console.log(typeof deposit);
 
 console.log('Длина строки addExpenses: '+ addExpenses.length());
 
-console.log('Период равен '+ period +' месяцев');
-console.log('Цель заработать '+ mission +' рублей/долларов/гривен/юани');
+console.log('Период равен '+ period + ' месяцев');
+console.log('Цель заработать '+ mission + ' рублей/долларов/гривен/юани');
 console.log(addExpenses.toLowerCase().split());
 
 let budgetDay = money / 30;

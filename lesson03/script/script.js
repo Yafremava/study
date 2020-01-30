@@ -16,9 +16,9 @@ console.log(typeof deposit);
 
 console.log('Длина строки addExpenses: '+ addExpenses.length());
 
-console.log('Период равен '+ period +' месяцев');
+console.log('Период равен ' + period + ' месяцев');
 
-console.log('Цель заработать '+ mission +' рублей/долларов/гривен/юани');
+console.log('Цель заработать ' + mission + ' рублей/долларов/гривен/юани');
 
 console.log(addExpenses.toLowerCase().split());
 
@@ -35,9 +35,9 @@ if(budgetDay >= 1200){
 } else if(budgetDay < 600 && budgetDay > 0){
   console.log("К сожалению у вас уровень дохода ниже среднего");
 } else if(budgetDay < 0){
-  console.log("Что-то пошло не так")
+  console.log("Что-то пошло не так");
 } else {
-  console.log("Все ваши доходы идут на обязательные рассходы")
+  console.log("Все ваши доходы идут на обязательные рассходы");
 }
 
   
