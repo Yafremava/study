@@ -19,6 +19,22 @@ showTypeOf(money);
 showTypeOf(income);
 showTypeOf(deposit);
 
+function getExpensesMonth(a, b){
+  console.log(a + b);
+}
+getExpensesMonth(amount1, amount2);
+
+const getAccumulatedMonth = function(c, d){
+  return c - d;
+};
+let accumulatedMonth = getAccumulatedMonth(money, getExpensesMonth);
+console.log(getAccumulatedMonth);
+
+function getTargetMonth(e, f){
+  console.log(e / f);
+}
+getTargetMonth(mission, budgetMonth)
+
 console.log('Длина строки addExpenses: '+ addExpenses.length());
 
 console.log('Период равен ' + period + ' месяцев');
