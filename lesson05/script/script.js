@@ -1,6 +1,6 @@
 'use strict';
 //Пошли функции
-let money,// = prompt("Ваш месячный доход?", 1000),
+let money,
   income = 'фриланс',
   addExpenses = prompt("Перечислите возможные расходы за рассчитываемый период через запятую", 'кафе, косметос, шмотки'),
   deposit = Boolean(confirm("Есть ли у вас депозит в банке?")),
@@ -17,8 +17,8 @@ let start = function() {
 
 start();
 
-let showTypeOf = function(data){
-  console.log(data, typeof(data));
+let showTypeOf = function(item){
+  console.log(typeof item);
 };
 showTypeOf(money);
 showTypeOf(income);
@@ -31,11 +31,11 @@ let getExpensesMonth = function(){
 
   for(let i = 0; i < 2; i++){
 
-    if (i ===0){
+    if (i === 0){
       expenses1 = prompt("Введите обязательную статью расходов?",'общага');
     } else if (i === 1){
       expenses2 = prompt("Введите обязательную статью расходов?", 'продукты'),
-    }
+    };
     sum += +prompt("Во сколько это обойдется?");
   }
   console.log(sum);
