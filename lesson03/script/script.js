@@ -1,16 +1,16 @@
 'use strict';
 
-let money = Number(prompt("Ваш месячный доход?", 1000)),
+let money = +prompt("Ваш месячный доход?", 1000),
   income = 'фриланс',
   addExpenses = prompt("Перечислите возможные расходы за рассчитываемый период через запятую", 'кафе, косметос, шмотки'),
-  deposit = Boolean(confirm("Есть ли у вас депозит в банке?")),
+  deposit = confirm("Есть ли у вас депозит в банке?"),
   mission = 800,
   period = 4,
 
   expenses1 = prompt("Введите обязательную статью расходов?",'общага'),
-  amount1 =Number(prompt("Во сколько это обойдется?")),
+  amount1 = +prompt("Во сколько это обойдется?"),
   expenses2 = prompt("Введите обязательную статью расходов?", 'продукты'),
-  amount2 =Number(prompt("Во сколько это обойдется?")),
+  amount2 = +prompt("Во сколько это обойдется?"),
   budgetMonth = money - amount1 - amount2;
 
 console.log(typeof money);
