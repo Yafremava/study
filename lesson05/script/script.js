@@ -4,15 +4,15 @@ let money,
   income = 'фриланс',
   addExpenses = prompt("Перечислите возможные расходы за рассчитываемый период через запятую", 'кафе, косметос, шмотки'),
   deposit = Boolean(confirm("Есть ли у вас депозит в банке?")),
-  mission = 800,
-  period = 4;
+  mission = 50000,
+  period = 3;
 
 
 let start = function() {
   money = prompt("Ваш месячный доход?");
 
-  while (isNaN(money) || money === '' || money === null) {
-    money = prompt("Ваш месячный доход?")
+  while (isNaN(money) || money === ' ' || money === null) {
+    money = prompt("Ваш месячный доход?");
   }
 };
 start();
