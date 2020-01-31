@@ -17,7 +17,7 @@ console.log(typeof money);
 console.log(typeof income);
 console.log(typeof deposit);
 
-console.log('Длина строки addExpenses: '+ addExpenses.length());
+console.log('Длина строки addExpenses: '+ addExpenses.length);
 
 console.log('Период равен ' + period + ' месяцев');
 
