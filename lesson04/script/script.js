@@ -6,47 +6,45 @@ let money = Number(prompt("Ваш месячный доход?", 1000)),
   deposit = Boolean(confirm("Есть ли у вас депозит в банке?")),
   mission = 800,
   period = 4,
+
   expenses1 = prompt("Введите обязательную статью расходов?",'общага'),
   amount1 =Number(prompt("Во сколько это обойдется?")),
   expenses2 = prompt("Введите обязательную статью расходов?", 'продукты'),
-  amount2 =Number(prompt("Во сколько это обойдется?")),
-  budgetMonth = money - amount1 - amount2;
+  amount2 =Number(prompt("Во сколько это обойдется?"));
 
 let showTypeOf = function(data){
   console.log(data, typeof(data));
-}
+};
 showTypeOf(money);
 showTypeOf(income);
 showTypeOf(deposit);
 
-function getExpensesMonth(a, b){
-  console.log(a + b);
-}
-getExpensesMonth(amount1, amount2);
-
-const getAccumulatedMonth = function(c, d){
-  return c - d;
+//Сумма обязательных расходов
+const getExpensesMonth = function(a, b){
+  return a + b;
 };
-let accumulatedMonth = getAccumulatedMonth(money, getExpensesMonth);
-console.log(getAccumulatedMonth);
+let expensesMonth = getExpensesMonth(amount1, amount2);
+console.log(expensesMonth);
 
-function getTargetMonth(e, f){
-  console.log(e / f);
-}
-getTargetMonth(mission, budgetMonth);
+//массив
+console.log(addExpenses.toLowerCase().split(", "));
 
-console.log('Длина строки addExpenses: '+ addExpenses.length());
+//накопления
+const getAccumulatedMonth = function(c, d){
+  return(c - d);
+};
+let accumulatedMonth = getAccumulatedMonth(money, expensesMonth);
+console.log(accumulatedMonth);
 
-console.log('Период равен ' + period + ' месяцев');
+//количество месяцев за которые будет достингута цель
+const getTargetMonth = function(e, f){
+  return(Math.ceil(e / f));
+};
+let targetMonth = getTargetMonth(mission, accumulatedMonth);
+console.log(targetMonth);
 
-console.log('Цель заработать ' + mission + ' рублей/долларов/гривен/юани');
-
-console.log(addExpenses.toLowerCase().split());
-
-console.log('Бюджет на месяц: ' + budgetMonth);
-console.log('Цель будет достигнута за ' + Math.ceil(mission / budgetMonth) + ' месяцев');
-
-let budgetDay = budgetMonth / 30;
+//бюджет на день
+let budgetDay = accumulatedMonth / 30;
 console.log('Бюджет на день: ' + Math.floor(budgetDay));
 
 let getStatusIncome = function(){
