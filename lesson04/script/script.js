@@ -33,7 +33,7 @@ console.log(getAccumulatedMonth);
 function getTargetMonth(e, f){
   console.log(e / f);
 }
-getTargetMonth(mission, budgetMonth)
+getTargetMonth(mission, budgetMonth);
 
 console.log('Длина строки addExpenses: '+ addExpenses.length());
 
