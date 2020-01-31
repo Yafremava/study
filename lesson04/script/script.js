@@ -7,9 +7,9 @@ let money = +prompt("Ваш месячный доход?", 1000),
   period = 4,
 
   expenses1 = prompt("Введите обязательную статью расходов?",'общага'),
-  amount1 = +prompt("Во сколько это обойдется?"),
+  costs1 = +prompt("Во сколько это обойдется?"),
   expenses2 = prompt("Введите обязательную статью расходов?", 'продукты'),
-  amount2 = +prompt("Во сколько это обойдется?");
+  costs2 = +prompt("Во сколько это обойдется?");
 
 let showTypeOf = function(data){
   console.log(data, typeof(data));
@@ -19,32 +19,31 @@ showTypeOf(income);
 showTypeOf(deposit);
 
 //Сумма обязательных расходов
-const getExpensesMonth = function(a, b){
-  return a + b;
+let getExpensesMonth = function(){
+  return costs1 + costs2;
 };
-let expensesMonth = getExpensesMonth(amount1, amount2);
-console.log(expensesMonth);
+console.log('Расходы за месяц ' + getExpensesMonth());
 
 //массив
 console.log(addExpenses.toLowerCase().split(", "));
 
 //накопления
-const getAccumulatedMonth = function(c, d){
-  return(c - d);
+let getAccumulatedMonth = function(){
+  return money - getExpensesMonth();
 };
-let accumulatedMonth = getAccumulatedMonth(money, expensesMonth);
-console.log(accumulatedMonth);
+let accumulatedMonth = getAccumulatedMonth();
+
 
 //количество месяцев за которые будет достингута цель
-const getTargetMonth = function(e, f){
-  return(Math.ceil(e / f));
+let getTargetMonth = function(){
+  return mission / accumulatedMonth;
 };
-let targetMonth = getTargetMonth(mission, accumulatedMonth);
-console.log(targetMonth);
+let targetMonth = Math.ceil(getTargetMonth());
+console.log('Цель будет достигнута за ' + targetMonth + ' месяцев');
 
 //бюджет на день
-let budgetDay = accumulatedMonth / 30;
-console.log('Бюджет на день: ' + Math.floor(budgetDay));
+let budgetDay = Math.floor(accumulatedMonth / 30);
+console.log('Бюджет на день: ' + budgetDay);
 
 let getStatusIncome = function(){
   if(budgetDay >= 1200){
