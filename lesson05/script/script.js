@@ -1,5 +1,5 @@
 let isNumber = function(n) {
-  return !isNaN(parseFloat(n)) && isFinite(n)
+  return (!isNaN(parseFloat(n)) && isFinite(n))
 };
 
 let money,
