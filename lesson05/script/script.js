@@ -13,7 +13,6 @@ let money,
 let start = function() {
   money = prompt("Ваш месячный доход?");
   do {
-    
     money = prompt("Ваш месячный доход?");   
   }
   while (!isNumber(money));
@@ -38,12 +37,10 @@ let getExpensesMonth = function(){
 
     expenses[i] = prompt("Введите обязательную статью расходов?");
     sum += +prompt("Во сколько это обойдется?"); 
-    
+    while (!isNumber(sum)) {
+      sum += prompt("Во сколько это обойдется?");   
+    }
   }
-  while (!isNumber(sum)) {
-    sum = prompt("Во сколько это обойдется?");   
-  }
-  
   console.log(expenses);
   return sum;
 };
@@ -70,6 +67,7 @@ function getTargetMonth(targetMonth){
   } else {
     console.log('Цель будет достигнута за ' + targetMonth + ' месяцев');
   }
+  return targetMonth;
 }
 getTargetMonth();
 
