@@ -4,16 +4,15 @@ let isNumber = function(n) {
 
 let money,
   income = 'фриланс',
-  addExpenses = prompt("Перечислите возможные расходы за рассчитываемый период через запятую"),
+  addExpenses = prompt("Перечислите возможные расходы за рассчитываемый период через запятую",'еда, жильё'),
   deposit = confirm("Есть ли у вас депозит в банке?"),
-  mission = 5000,
+  mission = 6000,
   period = 4;
 
 
 let start = function() {
-  money = prompt("Ваш месячный доход?");
   do {
-    money = prompt("Ваш месячный доход?");   
+    money = prompt("Ваш месячный доход?", 10000);   
   }
   while (!isNumber(money));
 };
@@ -33,12 +32,11 @@ let expenses = [];
 let getExpensesMonth = function(){
   let sum = 0;
   
-  for(let i = 0; i < 1; i++){
+  for(let i = 0; i < 2; i++){
 
     expenses[i] = prompt("Введите обязательную статью расходов?");
-    sum += +prompt("Во сколько это обойдется?"); 
     do {
-      sum = prompt("Во сколько это обойдется?");   
+      sum += +prompt("Во сколько это обойдется?", 1000);   
     }
     while (!isNumber(sum));
   }
@@ -55,14 +53,15 @@ console.log(addExpenses.toLowerCase().split(", "));
 
 //накопления
 let getAccumulatedMonth = function(){
-  return money - getExpensesMonth();
+  return money - expensesAmount;
 };
 let accumulatedMonth = getAccumulatedMonth();
 
 
 //количество месяцев за которые будет достингута цель
-let targetMonth = Math.ceil(mission / accumulatedMonth);
-function getTargetMonth(targetMonth){
+
+function getTargetMonth(){
+  let targetMonth = Math.ceil(mission / accumulatedMonth);
   if (targetMonth < 0) {
     console.log("Цель не будет достигнута");
   } else {
