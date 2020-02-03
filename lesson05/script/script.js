@@ -1,5 +1,5 @@
 let isNumber = function(n) {
-  return (!isNaN(parseFloat(n)) && isFinite(n))
+  return (!isNaN(parseFloat(n)) && isFinite(n));
 };
 
 let money,
@@ -33,19 +33,17 @@ showTypeOf(deposit);
 let expenses = [];
 let getExpensesMonth = function(){
   let sum = 0;
-
-  for(let i = 0; i < 2; i++){
+  
+  for(let i = 0; i < 1; i++){
 
     expenses[i] = prompt("Введите обязательную статью расходов?");
-
-    sum += +prompt("Во сколько это обойдется?");
-    do {
-    
-      sum = prompt("Во сколько это обойдется?");   
-    }
-    while (!isNumber(sum));
+    sum += +prompt("Во сколько это обойдется?"); 
     
   }
+  while (!isNumber(sum)) {
+    sum = prompt("Во сколько это обойдется?");   
+  }
+  
   console.log(expenses);
   return sum;
 };
@@ -65,12 +63,15 @@ let accumulatedMonth = getAccumulatedMonth();
 
 
 //количество месяцев за которые будет достингута цель
-let getTargetMonth = function(){
-  return mission / accumulatedMonth;
-};
-let targetMonth = Math.ceil(getTargetMonth());
-console.log('Цель будет достигнута за ' + targetMonth + ' месяцев');
-
+let targetMonth = Math.ceil(mission / accumulatedMonth);
+function getTargetMonth(targetMonth){
+  if (targetMonth < 0) {
+    console.log("Цель не будет достигнута");
+  } else {
+    console.log('Цель будет достигнута за ' + targetMonth + ' месяцев');
+  }
+}
+getTargetMonth();
 
 //бюджет на день
 let budgetDay = Math.floor(accumulatedMonth / 30);
