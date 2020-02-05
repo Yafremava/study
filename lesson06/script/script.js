@@ -3,28 +3,40 @@ let isNumber = function(n) {
 };
 
 let money,
-  income = 'фриланс',
-  addExpenses = prompt("Перечислите возможные расходы за рассчитываемый период через запятую",'еда, жильё'),
-  deposit = confirm("Есть ли у вас депозит в банке?"),
-  mission = 6000,
-  period = 4;
-
-
-let start = function() {
-  do {
-    money = prompt("Ваш месячный доход?", 10000);   
-  }
-  while (!isNumber(money));
-};
+  start = function() {
+    do {
+      money = prompt("Ваш месячный доход?", 10000);   
+    }
+    while (!isNumber(money));
+  };
 start();
+
+let appData ={
+  income: {},
+  addIncome: [],
+  expenses: {},
+  addExpenses: [],
+  deposit: false,
+  mission: 50000,
+  period: 3,
+  asking: function(){
+    let addExpenses = prompt("Перечислите возможные расходы за рассчитываемый период через запятую",'Еда, жильё');
+      appData.addExpenses = addExpenses.toLowerCase().split(", ");
+      appData.deposit = confirm("Есть ли у вас депозит в банке?");
+  }
+
+};
+
+
+
 
 
 let showTypeOf = function(data){
   console.log(typeof data);
 };
 showTypeOf(money);
-showTypeOf(income);
-showTypeOf(deposit);
+showTypeOf(appData.income);
+showTypeOf(appData.deposit);
 
 
 //Сумма обязательных расходов,
@@ -47,8 +59,6 @@ let expensesAmount = getExpensesMonth();
 console.log('Расходы за месяц: '+ expensesAmount);
 
 
-//массив
-console.log(addExpenses.toLowerCase().split(", "));
 
 
 //накопления
@@ -61,7 +71,7 @@ let accumulatedMonth = getAccumulatedMonth();
 //количество месяцев за которые будет достингута цель
 
 function getTargetMonth(){
-  let targetMonth = Math.ceil(mission / accumulatedMonth);
+  let targetMonth = Math.ceil(appData.mission / accumulatedMonth);
   if (targetMonth < 0) {
     console.log("Цель не будет достигнута");
   } else {
@@ -91,3 +101,5 @@ let getStatusIncome = function(){
   }
 };
 console.log(getStatusIncome());
+
+  
