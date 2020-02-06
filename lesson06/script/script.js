@@ -11,8 +11,8 @@ let money,
   };
 start();
 
-let expenses1,
-  expenses2;
+//let expenses1;
+
 let appData ={
   income: {},
   addIncome: [],
@@ -26,32 +26,29 @@ let appData ={
   budgetMonth: 0,
   expensesMonth: 0,
   asking: function(){
-    let addExpenses = prompt("Перечислите возможные расходы за рассчитываемый период через запятую",'Еда, жильё');
+    let question1,
+      addExpenses = prompt("Перечислите возможные расходы за рассчитываемый период через запятую",'Еда, жильё');
       appData.addExpenses = addExpenses.toLowerCase().split(", ");
       appData.deposit = confirm("Есть ли у вас депозит в банке?");
-    
-    let question;
-  
+      
+    appData.expenses.expenses1 = question1;
+     
+
     for(let i = 0; i < 2; i++){
 
-        expenses1 = prompt("Введите обязательную статью расходов?",'Кварплата');
-      
-        expenses2 = prompt("Введите обязательную статью расходов?",'Бензин');
+      appData.expenses.expenses1 = prompt("Введите обязательную статью расходов?",'Кварплата');
       do {
-        question = prompt("Во сколько это обойдется?", 1000);  
+        question1 = prompt("Во сколько это обойдется?", 1000);
+        
       }
-      while (!isNumber(question));
+      while (!isNumber(question1));
+        
     }
-    function showProps(obj, objName) {
-      let result = appData.expenses;
-      for (let i in obj) {
-        if (obj.hasOwnProperty(i)) {
-            result += objName + "." + i + " = " + obj[i] + "\n";
-        }
-      }
-      return result;
+     
+    for (var prop in appData.expenses) {
+      console.log(appData.expenses.expenses1 + " : " + appData.expenses[prop]);
     }
-    showProps(appData.expenses, "appData.expenses");
+    
   }
 
 };
@@ -67,7 +64,12 @@ appData.asking();
 //Сумма обязательных расходов,
 
 appData.getExpensesMonth = function(){
-  let sum = 0, question;
+  
+
+
+
+
+  /* let sum = 0, question;
   
   for(let i = 0; i < 2; i++){
 
@@ -82,7 +84,7 @@ appData.getExpensesMonth = function(){
     while (!isNumber(question));
     sum += +question;
   }
-  return sum;
+  return sum; */
 };
 let expensesAmount = appData.getExpensesMonth();
 console.log('Расходы за месяц: '+ expensesAmount);
