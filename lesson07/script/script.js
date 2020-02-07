@@ -2,9 +2,6 @@ let isNumber = function(n) {
   return (!isNaN(parseFloat(n)) && isFinite(n));
 };
 
-function isString(x) {
-  return x !== null && x !== undefined && x.constructor === String;
-}
 
 let money,
   start = function() {
@@ -36,7 +33,7 @@ let appData ={
       do {
         itemIncome = prompt('Какой у вас есть дополнительный заработок?', 'Таксую');
       }
-      while(!isString(itemIncome));
+      while(isNumber(itemIncome));
 
       let cashIncome;
       do {
@@ -53,7 +50,12 @@ let appData ={
       appData.deposit = confirm("Есть ли у вас депозит в банке?");
       console.log(addExpenses.split(/\s+/).map(word => word[0].toUpperCase() + word.substring(1)).join(' '));
     for(let i = 0; i < 2; i++){
-      let itemExpenses = prompt("Введите обязательную статью расходов?",'Кварплата');
+      let itemExpenses;
+      do {
+        itemExpenses = prompt("Введите обязательную статью расходов?",'Кварплата');
+      }
+      while(isNumber(itemExpenses));
+      
       let cashExpenses;
       do {
         cashExpenses = prompt("Во сколько это обойдется?", 1000);
