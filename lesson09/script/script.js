@@ -2,8 +2,8 @@
 
 let start = document.getElementById('start'),//Кнопка "Рассчитать"
 
-  plusButton1 = document.getElementsByTagName('button')[0],//Кнопки “+” 
-  plusButton1 = document.getElementsByTagName('button')[1],
+  btnPlusIncome1 = document.getElementsByTagName('button')[0],//Кнопки “+” 
+  btnPlusIncome2= document.getElementsByTagName('button')[1],
 
   depositCheck = document.querySelector('#deposit-check'),
 
@@ -19,7 +19,7 @@ let start = document.getElementById('start'),//Кнопка "Рассчитат�
   salaryAmount = document.querySelector('.salary-amount'),// поля по левой стороне, кроме возможных доходов
   incomeTitle = document.querySelector('.income-title'),
   incomeAmount = document.querySelector('.income-amount'),
-  esTexpensitle = document.querySelector('.expenses-title'),
+  expensesTitle = document.querySelector('.expenses-title'),
   additionalExpensesItem = document.querySelector('.additional_expenses-item'),
   targetAmount = document.querySelector('.target-amount'),
   periodSelect = document.querySelector('.period-select');
