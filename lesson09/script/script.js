@@ -12,11 +12,11 @@ let button = document.getElementById('start'),
   additionalExpenses = document.getElementsByClassName('result-total additional_expenses-value'),
   incomePeriod = document.getElementsByClassName('result-total income_period-value'),
   targetMonth = document.getElementsByClassName('result-total target_month-value'),
-  salaryAmount = document.querySelector('salary-amount'),
-  incomeTitle = document.querySelector('income-title'),
-  incomeAmount = document.querySelector('income-amount'),
-  expensesTitle = document.querySelector('expenses-title'),
-  additionalExpenses = document.querySelector('additional_expenses-item');
+  salaryAmount = document.querySelector('.salary-amount'),
+  incomeTitle = document.querySelector('.income-title'),
+  incomeAmount = document.querySelector('.income-amount'),
+  expensesTitle = document.querySelector('.expenses-title'),
+  additionalExpensesItem = document.querySelector('.additional_expenses-item');
 
 
 console.log(button);
