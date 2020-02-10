@@ -2,7 +2,7 @@
 
 let button = document.getElementById('start'),//Кнопку "Рассчитать"
 
-  plusButton1 = document.getElementsByTagName('h1')[0],
+  plusButton1 = document.getElementsByTagName('h1')[0],//Кнопки “+” 
   plusButton2 = document.getElementsByTagName('h1')[0],
 
   checkbox = document.querySelector('#deposit-check'),
@@ -24,5 +24,3 @@ let button = document.getElementById('start'),//Кнопку "Рассчитат
   additionalExpensesItem = document.querySelector('.additional_expenses-item'),
   targetAmount = document.querySelector('.target-amount'),
   periodSelect = document.querySelector('.period-select');
-
-console.log(budgetDay);
