@@ -3,7 +3,7 @@
 let start = document.getElementById('start'),//Кнопка "Рассчитать"
 
   btnPlusIncome1 = document.getElementsByTagName('button')[0],//Кнопки “+” 
-  btnPlusIncome2= document.getElementsByTagName('button')[1],
+  btnPlusExpenses2= document.getElementsByTagName('button')[1],
 
   depositCheck = document.querySelector('#deposit-check'),
 
