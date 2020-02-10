@@ -1,21 +1,20 @@
 'use strict';
 
-let button = document.getElementById('start'),//Кнопку "Рассчитать"
+let start = document.getElementById('start'),//Кнопка "Рассчитать"
 
-  plusButton1 = document.getElementsByTagName('h1')[0],//Кнопки “+” 
-  plusButton2 = document.getElementsByTagName('h1')[0],
+  plusButton1 = document.getElementsByTagName('button')[0],//Кнопки “+” 
+  plusButton1 = document.getElementsByTagName('button')[1],
 
-  checkbox = document.querySelector('#deposit-check'),
+  depositCheck = document.querySelector('#deposit-check'),
 
-  possibleIncome1 = document.querySelectorAll('.additional_income-item')[0],//поля возможных доходов
-  possibleIncome2 = document.querySelectorAll('.additional_income-item')[1],
+  additionalIncomeItem = document.querySelectorAll('.additional_income-item'),//поля возможных доходов
 
-  budgetDay = document.getElementsByClassName('result-total budget_day-value'),//элементы по правой стороне
-  expensesMonth = document.getElementsByClassName('result-total expenses_month-value'),
-  additionalIncome = document.getElementsByClassName('result-total additional_income-value'),
-  additionalExpenses = document.getElementsByClassName('result-total additional_expenses-value'),
-  incomePeriod = document.getElementsByClassName('result-total income_period-value'),
-  targetMonth = document.getElementsByClassName('result-total target_month-value'),
+  budgetDayVal = document.getElementsByClassName('budget_day-value'),//элементы по правой стороне
+  expensesMonthVal = document.getElementsByClassName('expenses_month-value'),
+  additionalIncomeVal = document.getElementsByClassName('additional_income-value'),
+  additionalExpensesVal = document.getElementsByClassName('additional_expenses-value'),
+  incomePeriodVal = document.getElementsByClassName('income_period-value'),
+  targetMonthVal = document.getElementsByClassName('target_month-value'),
 
   salaryAmount = document.querySelector('.salary-amount'),// поля по левой стороне, кроме возможных доходов
   incomeTitle = document.querySelector('.income-title'),
@@ -24,3 +23,4 @@ let button = document.getElementById('start'),//Кнопку "Рассчитат
   additionalExpensesItem = document.querySelector('.additional_expenses-item'),
   targetAmount = document.querySelector('.target-amount'),
   periodSelect = document.querySelector('.period-select');
+
