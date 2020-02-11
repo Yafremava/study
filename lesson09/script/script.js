@@ -24,3 +24,4 @@ let start = document.getElementById('start'),//Кнопка "Рассчитат�
   targetAmount = document.querySelector('.target-amount'),
   periodSelect = document.querySelector('.period-select');
 
+console.log(additionalIncomeItem);
