@@ -16,6 +16,4 @@ document.getElementsByTagName('a')[2].innerHTML="Книга 3. this и Прот�
 let adv = document.querySelector('.adv');//удаление рекламы
 adv.classList.remove("adv");
 
-console.log(document.getElementsByTagName('ul')[1]);
-
 
