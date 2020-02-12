@@ -1,22 +1,39 @@
 'use strict';
 
-let books = document.querySelectorAll('.books'),//замена порядка книг
-  book = document.querySelectorAll('.book');
+let books = document.querySelector('.books'),//замена порядка книг
+  book = books.querySelectorAll('.book');
 
-books[0].insertBefore(book[1], book[0]);
-books[0].removeChild(book[2]);
-books[0].appendChild(book[2]);
-books[0].insertBefore(book[4], book[3]);
+books.insertBefore(book[1], book[0]);
+books.removeChild(book[2]);
+books.appendChild(book[2]);
+books.insertBefore(book[4], book[3]);
 
-let body = document.querySelector('body');//замена фона
-body.setAttribute('style', 'background-image: url(./image/you-dont-know-js.jpg)');
+//замена фона
+document.body.setAttribute('style', 'background-image: url(./image/you-dont-know-js.jpg)');
 
-document.getElementsByTagName('a')[2].innerHTML="Книга 3. this и Прототипы Объектов";//замена заголовка в книге 3
+book[4].querySelector('h2 a').textContent="Книга 3. this и Прототипы Объектов";//замена заголовка в книге 3
 
 let adv = document.querySelector('.adv');//удаление рекламы
-adv.classList.remove("adv");
+adv.remove("adv");
 
-let li8 =document.getElementsByTagName('li')[8],//замена глав в книге 2 и 5
+let li2 = book[0].querySelectorAll('li'),//замена глав
+  li5 = book[5].querySelectorAll('li'),
+  li6 = book[2].querySelectorAll('li'); 
+
+console.log(book);
+li2[9].append(li2[2]);
+li2[3].append(li2[6]);
+li2[3].append(li2[8]);
+
+li5[1].append(li5[9]);
+li5[1].append(li5[3]);
+li5[3].append(li5[4]);
+li5[7].append(li5[5]);
+
+//let newElem = document.createElement('li');//вставка главы 8 в книгу 6
+//newElem.textContent ='Глава 8: За пределами ES6';
+
+/* let li8 =document.getElementsByTagName('li')[8],//замена глав в книге 2 и 5
   li9 =document.getElementsByTagName('li')[9],
   li10 =document.getElementsByTagName('li')[10],
   li11 =document.getElementsByTagName('li')[11],
@@ -114,3 +131,5 @@ elements[2].removeChild(section[18]);
 elements[2].appendChild(section[18]); 
 
 
+ let li = document.querySelectorAll('li');
+ console.log(li); */
