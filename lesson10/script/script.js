@@ -33,4 +33,3 @@ let newElem = document.createElement('li');//вставка главы 8 в кн
 newElem.textContent ='Глава 8: За пределами ES6';
 book[2].append(newElem);
 newElem.after(li6[9]);
-console.log(book);
