@@ -2,8 +2,8 @@
 
 let start = document.getElementById('start'),//Кнопка "Рассчитать"
 
-  btnPlusIncome1 = document.getElementsByTagName('button')[0],//Кнопки “+” 
-  btnPlusExpenses2= document.getElementsByTagName('button')[1],
+  PlusIncome = document.getElementsByTagName('button')[0],//Кнопки “+” 
+  PlusExpenses= document.getElementsByTagName('button')[1],
 
   depositCheck = document.querySelector('#deposit-check'),
 
@@ -20,6 +20,7 @@ let start = document.getElementById('start'),//Кнопка "Рассчитат�
   incomeTitle = document.querySelector('.income-title'),
   incomeAmount = document.querySelector('.income-amount'),
   expensesTitle = document.querySelector('.expenses-title'),
+  expensesItems = document.querySelectorAll('.expenses-items'),
   additionalExpensesItem = document.querySelector('.additional_expenses-item'),
   targetAmount = document.querySelector('.target-amount'),
   periodSelect = document.querySelector('.period-select');
@@ -29,7 +30,7 @@ let start = document.getElementById('start'),//Кнопка "Рассчитат�
   };
   
   
-  let money;
+
    
   let appData ={
     income: {},
@@ -41,15 +42,39 @@ let start = document.getElementById('start'),//Кнопка "Рассчитат�
     moneyDeposit: 0,
     mission: 50000,
     period: 3,
-    budget: money,
+    budget: 0,
     budgetDay: 0,
     budgetMonth: 0,
     expensesMonth: 0,
     start: function() {
-      do {
-        money = prompt("Ваш месячный доход?", 10000);   
+      if(salaryAmount.value === ''){
+        alert('Ошибка, поле "Месячный доход должно быть заполнено"');
+        return;
       }
-      while (!isNumber(money));
+      appData.budget = salaryAmount.value;
+      console.log("salaryAmount.value", salaryAmount.value);
+
+      appData.getExpenses();
+      appData.getExpensesMonth();
+      appData.getBudget();
+  },
+  
+    addExpensesBlock: function(){
+      let cloneExpensesItems = expensesItems[0].cloneNode(true);
+      expensesItems[0].parentNode.insertBefore(cloneExpensesItems, PlusExpenses);
+      expensesItems = document.querySelectorAll('.expenses-items');
+      if(expensesItems.length === 3){
+        PlusExpenses.style.display = 'none';
+      }
+    },
+    getExpenses: function(){
+      expensesItems.forEach(function(item){
+        let itemExpenses = item.querySelector('.expenses-title').value;
+        let cashExpenses = item.querySelector('.expenses-amount').value;
+        if(itemExpenses !== '' && cashExpenses !== ''){
+          appData.expenses[itemExpenses] = cashExpenses;
+        }
+      });
     },
     asking: function(){
       if(confirm('Есть ли у вас дополнительный имточник заработка?')){
@@ -73,21 +98,7 @@ let start = document.getElementById('start'),//Кнопка "Рассчитат�
         appData.addExpenses = addExpenses.toLowerCase().split(", ");
         appData.deposit = confirm("Есть ли у вас депозит в банке?");
         console.log(addExpenses.split(/\s+/).map(word => word[0].toUpperCase() + word.substring(1)).join(' '));
-      for(let i = 0; i < 2; i++){
-        let itemExpenses;
-        do {
-          itemExpenses = prompt("Введите обязательную статью расходов?",'Кварплата');
-        }
-        while(isNumber(itemExpenses));
-        
-        let cashExpenses;
-        do {
-          cashExpenses = prompt("Во сколько это обойдется?", 1000);
-          
-        }
-        while (!isNumber(cashExpenses));
-        appData.expenses[itemExpenses] = cashExpenses;
-      }
+      
     },
     getExpensesMonth: function(){
       for(let key in appData.expenses){
@@ -127,22 +138,14 @@ let start = document.getElementById('start'),//Кнопка "Рассчитат�
     }
   };
   
-  appData.asking();
-  appData.getExpensesMonth();
-  appData.getBudget();
+  start.addEventListener('click', appData.start);
+
+  PlusExpenses.addEventListener('click', appData.addExpensesBlock);
   
-  console.log('Расходы за месяц: ' + appData.expensesMonth);
   
   if (appData.getTargetMonth() > 0) {
     console.log("Цель будет достигнута за " + Math.ceil(appData.getTargetMonth()) + 'месяца');
   } else {
     console.log('Цель не будет достигнута');
-  }
-  
-  
-  console.log(appData.getStatusIncome());
-  
-  for(let key in appData){
-    console.log("Наша программа включает в себя данные: " + key + ' : ' + appData[key]);
   }
   
