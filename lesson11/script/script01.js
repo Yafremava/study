@@ -56,7 +56,7 @@ let start = document.getElementById('start'),//Кнопка "Рассчитат�
     },
     start : function() {
       if(salaryAmount.value === ''){
-        start.disabled = true;
+        return;
       }
       appData.budget = +salaryAmount.value;
 
@@ -112,6 +112,10 @@ let start = document.getElementById('start'),//Кнопка "Рассчитат�
           appData.income[itemIncome] = cashIncome;
         }
       });
+      for(let key in appData.income){
+        appData.incomeMonth += +appData.income[key];
+      }
+
     },
     getAddIncome: function(){
       additionalIncomeItem.forEach(function(item){
@@ -120,15 +124,6 @@ let start = document.getElementById('start'),//Кнопка "Рассчитат�
           appData.addIncome.push(itemValue);
         }
       });
-    },
-    asking: function(){
-      if(confirm('Есть ли у вас дополнительный имточник заработка?')){
-        let itemIncome = prompt('Какой у вас есть дополнительный заработок?', 'Таксую');
-        let cashIncome = prompt('Сколько в месяц вы на этом зарабатываете?', 10000);
-        appData.income[itemIncome] = cashIncome;
-      }
-      let addExpenses = prompt("Перечислите возможные расходы за рассчитываемый период через запятую",'Еда, жильё, магазины');
-        appData.addExpenses = addExpenses.toLowerCase().split(',');
     },
     getExpensesMonth: function(){
       for(let key in appData.expenses){
@@ -168,6 +163,7 @@ let start = document.getElementById('start'),//Кнопка "Рассчитат�
     },
     periodChange: function(){
       periodAmount.innerHTML = periodSelect.value;
+      incomePeriodValue.innerHTML = periodSelect.value;
     }
   };
   start.addEventListener('click', appData.start);
@@ -176,6 +172,8 @@ let start = document.getElementById('start'),//Кнопка "Рассчитат�
   incomePlus.addEventListener('click', appData.addIncomeBlock);
  
   periodSelect.addEventListener('change', appData.periodChange);
+  periodSelect.addEventListener('oninput', appData.periodChange);
+  
   
   /* if (appData.getTargetMonth() > 0) {
     console.log("Цель будет достигнута за " + Math.ceil(appData.getTargetMonth()) + 'месяца');
