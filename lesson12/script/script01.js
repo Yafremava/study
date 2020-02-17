@@ -68,6 +68,7 @@ let start = document.getElementById('start'),//Кнопка "Рассчитат�
       appData.getBudget();
       appData.periodChange();
       appData.showResult();
+      console.log(this);
     },
     
     addExpensesBlock: function(){
