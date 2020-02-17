@@ -53,6 +53,9 @@ let start = document.getElementById('start'),//Кнопка "Рассчитат�
       additionalIncomeValue.value = appData.addIncome.join(', ');
       targetMonthValue.value = Math.ceil(appData.getTargetMonth());
       incomePeriodValue.value = appData.calcPeriod();
+      periodSelect.addEventListener('input', function(){
+        incomePeriodValue.value = appData.calcPeriod();
+      });
     },
     start : function() {
       if(salaryAmount.value === ''){
@@ -163,7 +166,6 @@ let start = document.getElementById('start'),//Кнопка "Рассчитат�
     },
     periodChange: function(){
       periodAmount.innerHTML = periodSelect.value;
-      //incomePeriodValue.innerHTML = periodSelect.value;
     }
   };
   start.addEventListener('click', appData.start);
@@ -171,8 +173,8 @@ let start = document.getElementById('start'),//Кнопка "Рассчитат�
   expensesPlus.addEventListener('click', appData.addExpensesBlock);
   incomePlus.addEventListener('click', appData.addIncomeBlock);
  
-  periodSelect.addEventListener('change', appData.periodChange);
-  //periodSelect.addEventListener('input', appData.periodChange);
+  periodSelect.addEventListener('input', appData.periodChange);
+  
   
   
   /* if (appData.getTargetMonth() > 0) {
