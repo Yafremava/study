@@ -57,6 +57,7 @@ let start = document.getElementById('start'),//Кнопка "Рассчитат�
       periodSelect.addEventListener('input', function(){
         incomePeriodValue.value = appData.calcPeriod();
       });
+     
     },
     start : function() {
       if(salaryAmount.value === ''){
@@ -73,7 +74,7 @@ let start = document.getElementById('start'),//Кнопка "Рассчитат�
       this.showResult();
     },
     reset: function(){
-
+      return;
     },
     addExpensesBlock: function(){
       let cloneExpensesItems = expensesItems[0].cloneNode(true);
@@ -179,15 +180,25 @@ let start = document.getElementById('start'),//Кнопка "Рассчитат�
     }
   };
   start.addEventListener('click', appData.start.bind(appData));
-  
+  start.addEventListener('click', function(){
+    start.style.display = 'none';
+    budgetDayValue.disabled = true;
+    budgetMonthValue.disabled = true;
+    expensesMonthValue.disabled = true;
+    additionalExpensesValue.disabled = true;
+    additionalIncomeValue.disabled = true;
+    incomePeriodValue.disabled = true;
+    targetMonthValue.disabled = true;
+    cancel.style.display ='inline';
+  });
+  cancel.addEventListener('click', appData.reset);
   expensesPlus.addEventListener('click', appData.addExpensesBlock);
   incomePlus.addEventListener('click', appData.addIncomeBlock);
  
   periodSelect.addEventListener('input', appData.periodChange);
   let startBind = appData.start.bind(appData);
   startBind();
-
-
+   
   /* for (let key in appData) {
     if (typeof appData[key] === 'function') {
       appData[key] = appData[key].bind(appData);
