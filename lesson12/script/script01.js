@@ -74,7 +74,7 @@ let start = document.getElementById('start'),//Кнопка "Рассчитат�
       this.showResult();
     },
     reset: function(){
-      return;
+      //Вот что мне сюда написать, сам потом будешь орать что я ничего не делаю
     },
     addExpensesBlock: function(){
       let cloneExpensesItems = expensesItems[0].cloneNode(true);
