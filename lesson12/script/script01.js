@@ -25,7 +25,8 @@ let start = document.getElementById('start'),//Кнопка "Рассчитат�
   targetAmount = document.querySelector('.target-amount'),
   periodSelect = document.querySelector('.period-select'),
   additionalExpensesItem = document.querySelector('.additional_expenses-item'),
-  periodAmount = document.querySelector('.period-amount');
+  periodAmount = document.querySelector('.period-amount'),
+  inputs = document.querySelectorAll('input[type=text]');
   
   let isNumber = function(n) {
     return (!isNaN(parseFloat(n)) && isFinite(n));
@@ -74,8 +75,19 @@ let start = document.getElementById('start'),//Кнопка "Рассчитат�
       this.showResult();
     },
     reset: function(){
-      //Вот что мне сюда написать, сам потом будешь орать что я ничего не делаю
-    },
+      for (let i = 0;  i < inputs.length; i++) {
+        inputs[i].value = '';
+      }
+      salaryAmount.disabled = false;
+      incomeTitle.disabled = false;
+      incomeAmount.disabled = false;
+      expensesTitle.disabled = false;
+      additionalIncomeItem.disabled = false;
+      additionalExpensesItem.disabled = false;
+      targetAmount.disabled = false;
+      start.style.display = 'inline';
+      cancel.style.display ='none'; 
+    }, 
     addExpensesBlock: function(){
       let cloneExpensesItems = expensesItems[0].cloneNode(true);
       expensesItems[0].parentNode.insertBefore(cloneExpensesItems, expensesPlus);
@@ -90,7 +102,7 @@ let start = document.getElementById('start'),//Кнопка "Рассчитат�
         let itemExpenses = item.querySelector('.expenses-title').value;
         let cashExpenses = item.querySelector('.expenses-amount').value;
         if(itemExpenses !== '' && cashExpenses !== ''){
-          this.expenses[itemExpenses] = cashExpenses;
+          appData.expenses[itemExpenses] = cashExpenses;
         }
       });
     },
@@ -99,7 +111,7 @@ let start = document.getElementById('start'),//Кнопка "Рассчитат�
       addExpenses.forEach(function(item){
         item = item.trim();
         if(item !== ''){
-          this.addExpenses.push(item);
+          appData.addExpenses.push(item);
         }
       });
     },
@@ -116,7 +128,7 @@ let start = document.getElementById('start'),//Кнопка "Рассчитат�
         let itemIncome = item.querySelector('.income-title').value;
         let cashIncome = item.querySelector('.income-amount').value;
         if(itemIncome !== '' && cashIncome !== ''){
-          this.income[itemIncome] = cashIncome;
+          appData.income[itemIncome] = cashIncome;
         }
       });
       for(let key in this.income){
@@ -128,7 +140,7 @@ let start = document.getElementById('start'),//Кнопка "Рассчитат�
       additionalIncomeItem.forEach(function(item){
         let itemValue = item.value.trim();
         if(itemValue !== ''){
-          this.addIncome.push(itemValue);
+          appData.addIncome.push(itemValue);
         }
       });
       
@@ -180,15 +192,19 @@ let start = document.getElementById('start'),//Кнопка "Рассчитат�
     }
   };
   start.addEventListener('click', appData.start.bind(appData));
+  let startBind = appData.start.bind(appData);
+  startBind();
+
   start.addEventListener('click', function(){
+    salaryAmount.disabled = true;
+    incomeTitle.disabled = true;
+    incomeAmount.disabled = true;
+    expensesTitle.disabled = true;
+    additionalIncomeItem.disabled = true;
+    additionalExpensesItem.disabled = true;
+    targetAmount.disabled = true;
+
     start.style.display = 'none';
-    budgetDayValue.disabled = true;
-    budgetMonthValue.disabled = true;
-    expensesMonthValue.disabled = true;
-    additionalExpensesValue.disabled = true;
-    additionalIncomeValue.disabled = true;
-    incomePeriodValue.disabled = true;
-    targetMonthValue.disabled = true;
     cancel.style.display ='inline';
   });
   cancel.addEventListener('click', appData.reset);
@@ -196,8 +212,7 @@ let start = document.getElementById('start'),//Кнопка "Рассчитат�
   incomePlus.addEventListener('click', appData.addIncomeBlock);
  
   periodSelect.addEventListener('input', appData.periodChange);
-  let startBind = appData.start.bind(appData);
-  startBind();
+  
    
   /* for (let key in appData) {
     if (typeof appData[key] === 'function') {
