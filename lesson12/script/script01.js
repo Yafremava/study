@@ -76,8 +76,6 @@ let start = document.getElementById('start'),//Кнопка "Рассчитат�
       inputs.forEach(function(item){
         item.disabled = true;
       });
-      periodSelect.disabled = true;//ползунок
-      periodAmount.disabled = true;
       incomePlus.disabled = true;//кнопки '+'
       expensesPlus.disabled = true;
       depositCheck.disabled =true;
@@ -86,18 +84,25 @@ let start = document.getElementById('start'),//Кнопка "Рассчитат�
     },
     reset: function(){
       let inputs = document.querySelectorAll('input[type=text]');
-      console.log(inputs);
       inputs.forEach(function(item){
        item.value = "";
       });
-      periodAmount.textContent = "1";//проблема
+      periodAmount.textContent = "1";
       periodSelect.value = "1";
-      
+      appData.budget = 0;
+      appData.budgetDay = 0;
+      appData.budgetMonth = 0;
+      appData.income = {};
+      appData.incomeMonth = 0;
+      appData.addIncome = [];
+      appData.expenses = {};
+      appData.expensesMonth = 0;
+      appData.addExpenses = [];
       inputs.forEach(function(item){
         item.disabled = false;
       });
-      periodSelect.disabled = false;
-      periodAmount.disabled = false;
+
+      
       incomePlus.disabled = false;
       expensesPlus.disabled = false;
       depositCheck.disabled = false;
