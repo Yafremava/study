@@ -25,8 +25,7 @@ let start = document.getElementById('start'),//Кнопка "Рассчитат�
   targetAmount = document.querySelector('.target-amount'),
   periodSelect = document.querySelector('.period-select'),
   additionalExpensesItem = document.querySelector('.additional_expenses-item'),
-  periodAmount = document.querySelector('.period-amount'),
-  inputs = document.querySelectorAll('input[type=text]');
+  periodAmount = document.querySelector('.period-amount');
   
   let isNumber = function(n) {
     return (!isNaN(parseFloat(n)) && isFinite(n));
@@ -73,18 +72,35 @@ let start = document.getElementById('start'),//Кнопка "Рассчитат�
       this.getBudget();
       this.periodChange();
       this.showResult();
+      let inputs = document.querySelectorAll('input[type=text]');
+      inputs.forEach(function(item){
+        item.disabled = true;
+      });
+      periodSelect.disabled = true;
+      periodAmount.disabled = true;
+      incomePlus.disabled = true;
+      expensesPlus.disabled = true;
+      depositCheck.disabled =true;
+      start.style.display = 'none';
+      cancel.style.display ='inline';
     },
     reset: function(){
-      for (let i = 0;  i < inputs.length; i++) {
-        inputs[i].value = '';
-      }
-      salaryAmount.disabled = false;
-      incomeTitle.disabled = false;
-      incomeAmount.disabled = false;
-      expensesTitle.disabled = false;
-      additionalIncomeItem.disabled = false;
-      additionalExpensesItem.disabled = false;
-      targetAmount.disabled = false;
+      let inputs = document.querySelectorAll('input[type=text]');
+      console.log(inputs);
+      inputs.forEach(function(item){
+       item.value = "";
+      });
+      periodAmount.value = "";//проблема
+      periodSelect.value = "";
+      
+      inputs.forEach(function(item){
+        item.disabled = false;
+      });
+      periodSelect.disabled = false;
+      periodAmount.disabled = false;
+      incomePlus.disabled = false;
+      expensesPlus.disabled = false;
+      depositCheck.disabled = false;
       start.style.display = 'inline';
       cancel.style.display ='none'; 
     }, 
@@ -195,30 +211,12 @@ let start = document.getElementById('start'),//Кнопка "Рассчитат�
   let startBind = appData.start.bind(appData);
   startBind();
 
-  start.addEventListener('click', function(){
-    salaryAmount.disabled = true;
-    incomeTitle.disabled = true;
-    incomeAmount.disabled = true;
-    expensesTitle.disabled = true;
-    additionalIncomeItem.disabled = true;
-    additionalExpensesItem.disabled = true;
-    targetAmount.disabled = true;
-
-    start.style.display = 'none';
-    cancel.style.display ='inline';
-  });
   cancel.addEventListener('click', appData.reset);
   expensesPlus.addEventListener('click', appData.addExpensesBlock);
   incomePlus.addEventListener('click', appData.addIncomeBlock);
  
   periodSelect.addEventListener('input', appData.periodChange);
   
-   
-  /* for (let key in appData) {
-    if (typeof appData[key] === 'function') {
-      appData[key] = appData[key].bind(appData);
-    }
-  } */
   //appData.start();  
   /* if (appData.getTargetMonth() > 0) {
     console.log("Цель будет достигнута за " + Math.ceil(appData.getTargetMonth()) + 'месяца');
