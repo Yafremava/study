@@ -89,15 +89,15 @@ let start = document.getElementById('start'),//Кнопка "Рассчитат�
       });
       periodAmount.textContent = "1";
       periodSelect.value = "1";
-      appData.budget = 0;
-      appData.budgetDay = 0;
-      appData.budgetMonth = 0;
-      appData.income = {};
-      appData.incomeMonth = 0;
-      appData.addIncome = [];
-      appData.expenses = {};
-      appData.expensesMonth = 0;
-      appData.addExpenses = [];
+      this.budget = 0;
+      this.budgetDay = 0;
+      this.budgetMonth = 0;
+      this.income = {};
+      this.incomeMonth = 0;
+      this.addIncome = [];
+      this.expenses = {};
+      this.expensesMonth = 0;
+      this.addExpenses = [];
       inputs.forEach(function(item){
         item.disabled = false;
       });
