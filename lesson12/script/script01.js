@@ -208,8 +208,6 @@ let start = document.getElementById('start'),//Кнопка "Рассчитат�
     }
   };
   start.addEventListener('click', appData.start.bind(appData));
-  let startBind = appData.start.bind(appData);
-  startBind();
 
   cancel.addEventListener('click', appData.reset);
   expensesPlus.addEventListener('click', appData.addExpensesBlock);
