@@ -76,9 +76,9 @@ let start = document.getElementById('start'),//Кнопка "Рассчитат�
       inputs.forEach(function(item){
         item.disabled = true;
       });
-      periodSelect.disabled = true;
+      periodSelect.disabled = true;//ползунок
       periodAmount.disabled = true;
-      incomePlus.disabled = true;
+      incomePlus.disabled = true;//кнопки '+'
       expensesPlus.disabled = true;
       depositCheck.disabled =true;
       start.style.display = 'none';
@@ -90,8 +90,8 @@ let start = document.getElementById('start'),//Кнопка "Рассчитат�
       inputs.forEach(function(item){
        item.value = "";
       });
-      periodAmount.value = "";//проблема
-      periodSelect.value = "";
+      periodAmount.textContent = "1";//проблема
+      periodSelect.value = "1";
       
       inputs.forEach(function(item){
         item.disabled = false;
