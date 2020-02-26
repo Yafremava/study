@@ -218,9 +218,9 @@ let start = document.getElementById('start'),//Кнопка "Рассчитат�
     const _this = this;
     start.addEventListener('click', _this.start.bind(_this));
 
-    cancel.addEventListener('click', _this.reset);
-    expensesPlus.addEventListener('click', _this.addExpensesBlock);
-    incomePlus.addEventListener('click', _this.addIncomeBlock);
+    cancel.addEventListener('click', _this.reset.bind(_this));
+    expensesPlus.addEventListener('click', _this.addExpensesBlock.bind(_this));
+    incomePlus.addEventListener('click', _this.addIncomeBlock.bind(_this));
  
     periodSelect.addEventListener('input', _this.periodChange);
   };
