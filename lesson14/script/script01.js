@@ -227,4 +227,4 @@ let start = document.getElementById('start'),//Кнопка "Рассчитат�
   
   const appData = new AppData();
   console.log(appData);
-  AppData.prototype.eventsListeners();
+  appData.eventsListeners();
