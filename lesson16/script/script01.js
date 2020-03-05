@@ -110,7 +110,12 @@ let start = document.getElementById('start'),//Кнопка "Рассчитат�
       expensesPlus.disabled = false;
       depositCheck.disabled = false;
       start.style.display = 'inline';
-      cancel.style.display ='none'; 
+      cancel.style.display ='none';
+      depositCheck.checked = false;
+      depositPercent.style.display = 'none';
+      depositBank.style.display = 'none';
+      depositAmount.style.display = 'none';
+      depositBank.value ='';
     } 
     addExpensesBlock(){
       let cloneExpensesItems = expensesItems[0].cloneNode(true);
@@ -178,7 +183,7 @@ let start = document.getElementById('start'),//Кнопка "Рассчитат�
     }
     getBudget(){
       const monthDeposit = this.moneyDeposit * (this.percentDeposit / 100);
-      this.budgetMonth = this.budget + this.incomeMonth - this.expensesMonth;
+      this.budgetMonth = this.budget + this.incomeMonth - this.expensesMonth + monthDeposit;
       this.budgetDay = Math.floor(this.budgetMonth / 30);
       
     }
@@ -207,15 +212,21 @@ let start = document.getElementById('start'),//Кнопка "Рассчитат�
       if(this.deposit){
         this.percentDeposit = depositPercent.value;
         this.moneyDeposit = depositAmount.value;
+        if(!isNumber(depositPercent.value) || depositPercent.value > 100 || depositPercent.value < 0){
+          alert("Введите корректное значение в поле проценты");
+          start.style.display.disabled = true;
+        }
         //(!isNumber(this.percentDeposit || this.moneyDeposit));
       }  
     }
     changePercent(){
       const valueSelect = this.value;
-      if (valueSelect === 'other'){
-       //ghj
+      if (valueSelect === 'other'){       
+        depositPercent.value = '';
+        depositPercent.style.display = 'inline-block';
       } else {
         depositPercent.value = valueSelect;
+        depositPercent.style.display = 'none';
       }
     }
     depositHandler(){
